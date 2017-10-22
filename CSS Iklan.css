@@ -54,13 +54,13 @@
     cursor: pointer
 }
 .isi-iklan span.url-iklan:before {
-    content: "\f0c0";
+    content: "\f0a1";
     font-family: FontAwesome;
     margin: 0 10px 0 0
 }
 .isi-iklan span.panah-besar {
-    color: #fff;
-    background: #000000;
+    color: #00aecd;
+    background: #ffffff;
     border-radius: 50%;
     height: 34px;
     float: right;
@@ -92,7 +92,7 @@
     top: 0;
     right: -85px;
     background: #cdcccc url(http://2.bp.blogspot.com/--ivaHIgXThk/UnJWU80FLhI/AAAAAAAAF_Y/WrH-8aYijGw/s1600/info-iklan.png) 0 0 no-repeat;
-    width: 100px;
+    width: 120px;
     height: 15px;
     z-index: 99;
     -webkit-transition: all .3s ease-in-out;
