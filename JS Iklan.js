@@ -1,8 +1,64 @@
-// JavaScript Document //<br />
-ads = new Array(4);<br />
-ads [0] = ‘</p>
-<div class="ads-box" "item"><a href="https://goo.gl/ef6dev" target="blank"><img src="https://2.bp.blogspot.com/-OLvT54mOndI/Wenvqr6E1fI/AAAAAAAAAmQ/CoguPEkidjA8BHEMujcg6-E_n0mVuzgqgCEwYBhgL/s1600/4635467333049326180.jpg" data-recalc-dims="1"></a></p>
-<p class="ad"><a href="http://androedland.net" target="blank"><span><font color="#000000" size="1" face="Arial, Helvetica, sans-serif">ads by Androedland</font></span></a></p>
-</div>
-<p>‘;<br />
-view = Math.floor(Math.random() * 1); document.write(ads[view]);
+<script>
+(function(a) {
+    a.fn.hoverTimeout = function(c, e, b, d) {
+        return this.each(function() {
+            var f = null,
+                g = a(this);
+            g.hover(function() {
+                clearTimeout(f);
+                f = setTimeout(function() {
+                    e.call(g)
+                }, c)
+            }, function() {
+                clearTimeout(f);
+                f = setTimeout(function() {
+                    d.call(g)
+                }, b)
+            })
+        })
+    }
+})(jQuery);
+(function(b) {
+    b.fn.iklanaccordion = function(a) {
+        a = jQuery.extend({
+            active: 1,
+            hovertimeout: 300,
+            sUpSpeed: 500,
+            sDownSpeed: 500,
+            sUpEasing: null,
+            sDownEasing: null
+        }, a);
+        return this.each(function() {
+            var g = b(this),
+                h = g.children("div[data-header]"),
+                f = a.active - 1;
+            h.each(function() {
+                b(this).hide().before('<h2 class="iklan-header">' + b(this).data("header") + "</h2>")
+            });
+            g.children("div:eq(" + f + ")").show().prev().css("margin-top", "-47px").addClass("active");
+            g.find(".iklan-header").hoverTimeout(a.hovertimeout, function() {
+                g.children("h2").removeClass("active").animate({
+                    marginTop: 0
+                });
+                h.slideUp(a.sUpSpeed, a.sUpEasing).animate({
+                    marginTop: -47
+                });
+                b(this).addClass("active").next().slideDown(a.sDownSpeed, a.sDownEasing)
+            })
+        })
+    }
+})(jQuery);
+$(function() {
+    $(".iklan-teks-sidebar").iklanaccordion();
+    $(".iklan-teks-post-footer").iklanaccordion()
+});
+$(".info-icon").hover(function() {
+    $(".info-iklan").animate({
+        right: 0
+    }, 500, "easeInOutExpo")
+}, function() {
+    $(".info-iklan").animate({
+        right: -103
+    }, 500, "easeInOutExpo")
+});
+</script>
